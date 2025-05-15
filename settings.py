@@ -4,13 +4,13 @@
 
 # Nr. of physical batteries to be aggregated. Smart shunt for battery current is not needed and not supported.
 NR_OF_BATTERIES = 2
-NR_OF_CELLS_PER_BATTERY = 22
+NR_OF_CELLS_PER_BATTERY = 8
 
 # Nr. of MPPTs
-NR_OF_MPPTS = 1
+NR_OF_MPPTS = 0
 
 # If DC loads with Smart Shunt present, can be used for total current measurement.
-DC_LOADS = False
+DC_LOADS = True 
 
 # False: Current subtracted, True: Current added
 INVERT_SMARTSHUNT = False
@@ -27,7 +27,7 @@ BATTERY_PRODUCT_NAME_PATH = "/ProductName"
 
 # Key world to identify the batteries (to exclude SmartShunt). If the BATTERY_PRODUCT_NAME_PATH, e.g. SerialBattery(Jkbms),
 # contains this key word, the device will be identified and included into the battery list. 
-BATTERY_PRODUCT_NAME = "SerialBattery"
+BATTERY_PRODUCT_NAME = "SerialBattery(JKBMS)"
 
 # The name stored in the here selected BATTERY_INSTANCE_NAME_PATH will be taken as the name of the battery in the list.
 # Each battery instance should have an unique name. If not, a number will be added. You can choose: "/CustomName"
@@ -57,7 +57,7 @@ READ_TRIALS = 10
 # If True, the battery current measurement by Multis/Quattros and MPPTs is taken instead of BMS.
 # Necessary for JK BMS due to poor current measurement precision.
 # The Victron current measurement is very precise, therefore SmartShunt is not needed and not supported.
-CURRENT_FROM_VICTRON = True
+CURRENT_FROM_VICTRON = False 
 
 # If True, the program's own charge counter is used instead of the BMS counters.
 # Necessary for JK BMS due to poor current measurement precision
@@ -111,10 +111,10 @@ CHARGE_VOLTAGE_LIST = [
 # This is a cell-full protection feature. If MAX_CELL_VOLTAGE is reached by at least one cell,
 # the CVL is dynamically limited to avoid over-charging and triggering the BMS disconnection.
 # DC-coupled PV feed-in will be disabled to enable the CCL.
-MAX_CELL_VOLTAGE = 2.55
+MAX_CELL_VOLTAGE = 3.65 
 
 # This is a cell-empty protection feature. If reached, discharge current is set to zero
-MIN_CELL_VOLTAGE = 1.9
+MIN_CELL_VOLTAGE = 2.45
 
 # Allows discharge again above MIN_CELL_VOLTAGE + MIN_CELL_HYSTERESIS
 MIN_CELL_HYSTERESIS = 0.3
@@ -128,10 +128,10 @@ CELL_DIFF_MAX = 0.025
 BATTERY_EFFICIENCY = 0.985
 
 # Max. total charge current at normal conditions
-MAX_CHARGE_CURRENT = 200
+MAX_CHARGE_CURRENT = 250
 
 # Max. total discharge current at normal conditions
-MAX_DISCHARGE_CURRENT = 200
+MAX_DISCHARGE_CURRENT = 250
 
 # Settings limiting charge current when at least one cell is getting full or empty. The lists may have any length,
 # but the length must be same for voltage and current. Linear interpolation is used for values between. 
